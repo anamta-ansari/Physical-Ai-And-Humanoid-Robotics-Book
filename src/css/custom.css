@@ -1,0 +1,432 @@
+/**
+ * Copyright (c) 2017-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * Custom CSS for the Physical AI & Humanoid Robotics book
+ */
+
+/* Import KaTeX CSS */
+@import '~katex/dist/katex.min.css';
+
+/* Overall cyberpunk theme - dark background with vibrant purple/neon glow */
+html[data-theme='dark'] {
+  --ifm-background-color: #1E002B;
+  --ifm-color-primary: #8B00FF;
+  --ifm-color-primary-dark: #7A00E6;
+  --ifm-color-primary-darker: #6900CC;
+  --ifm-color-primary-darkest: #5800B3;
+  --ifm-color-primary-light: #9C33FF;
+  --ifm-color-primary-lighter: #AD4DFF;
+  --ifm-color-primary-lightest: #BE66FF;
+}
+
+/* Glowing circuit board border around the entire page */
+body {
+  background: linear-gradient(145deg, #1E002B, #0d001a) !important;
+  background-attachment: fixed;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, rgba(139, 0, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(139, 0, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -1;
+  animation: circuitPulse 4s infinite alternate;
+}
+
+@keyframes circuitPulse {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.7; }
+}
+
+/* Root text color - force white for bright visibility */
+:root {
+  color: #ffffff;
+}
+
+/* Enhanced dark/light mode - make both modes use bright text */
+html[data-theme='dark'] {
+  --ifm-color-emphasis-200: #8B00FF;
+  --ifm-color-emphasis-300: #A78BFA;
+  --ifm-color-emphasis-400: #C4B5FD;
+  --ifm-color-emphasis-500: #DDD6FE;
+  --ifm-color-emphasis-600: #EDE9FE;
+  --ifm-color-emphasis-700: #FAF5FF;
+  --ifm-color-emphasis-800: #F5F3FF;
+  --ifm-color-emphasis-900: #F3E8FF;
+  --ifm-font-color-base: #ffffff; /* Ensure base text is white */
+  --ifm-font-color-base-inverse: #ffffff; /* Ensure inverse text is white */
+  --ifm-color-content: #ffffff; /* Ensure content text is white */
+  --ifm-color-content-secondary: #f0f0f0; /* Ensure secondary content is light */
+}
+
+/* Force all text to be bright white in dark mode */
+html[data-theme='dark'] body,
+html[data-theme='dark'] .navbar,
+html[data-theme='dark'] .footer,
+html[data-theme='dark'] .hero,
+html[data-theme='dark'] .container,
+html[data-theme='dark'] .markdown,
+html[data-theme='dark'] .theme-doc-markdown,
+html[data-theme='dark'] .theme-edit-this-page,
+html[data-theme='dark'] .table-of-contents,
+html[data-theme='dark'] .menu,
+html[data-theme='dark'] .pagination-nav,
+html[data-theme='dark'] .pagination-nav__sublabel,
+html[data-theme='dark'] .pagination-nav__label {
+  color: #ffffff !important;
+}
+
+/* Ensure all text in markdown content is bright white in dark mode */
+html[data-theme='dark'] .markdown p,
+html[data-theme='dark'] .markdown h1,
+html[data-theme='dark'] .markdown h2,
+html[data-theme='dark'] .markdown h3,
+html[data-theme='dark'] .markdown h4,
+html[data-theme='dark'] .markdown h5,
+html[data-theme='dark'] .markdown h6,
+html[data-theme='dark'] .markdown li,
+html[data-theme='dark'] .markdown a {
+  color: #ffffff !important;
+}
+
+/* Ensure content text is bright in dark mode */
+html[data-theme='dark'] .theme-doc-markdown p,
+html[data-theme='dark'] .theme-doc-markdown li {
+  color: #f0f0f0 !important;
+}
+
+/* Ensure links in dark mode are visible */
+html[data-theme='dark'] a {
+  color: #C4B5FD !important;
+}
+
+html[data-theme='dark'] a:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(139, 0, 255, 0.8);
+}
+
+/* Force all text to be bright white in light mode too (override default light theme) */
+html[data-theme='light'] {
+  --ifm-font-color-base: #ffffff !important;
+  --ifm-font-color-base-inverse: #ffffff !important;
+  --ifm-color-content: #ffffff !important;
+  --ifm-color-content-secondary: #f0f0f0 !important;
+}
+
+/* Force all text to be bright white in light mode */
+html[data-theme='light'] body,
+html[data-theme='light'] .navbar,
+html[data-theme='light'] .footer,
+html[data-theme='light'] .hero,
+html[data-theme='light'] .container,
+html[data-theme='light'] .markdown,
+html[data-theme='light'] .theme-doc-markdown,
+html[data-theme='light'] .theme-edit-this-page,
+html[data-theme='light'] .table-of-contents,
+html[data-theme='light'] .menu,
+html[data-theme='light'] .pagination-nav,
+html[data-theme='light'] .pagination-nav__sublabel,
+html[data-theme='light'] .pagination-nav__label {
+  color: #ffffff !important;
+}
+
+/* Ensure all text in markdown content is bright white in light mode */
+html[data-theme='light'] .markdown p,
+html[data-theme='light'] .markdown h1,
+html[data-theme='light'] .markdown h2,
+html[data-theme='light'] .markdown h3,
+html[data-theme='light'] .markdown h4,
+html[data-theme='light'] .markdown h5,
+html[data-theme='light'] .markdown h6,
+html[data-theme='light'] .markdown li,
+html[data-theme='light'] .markdown a {
+  color: #ffffff !important;
+}
+
+/* Ensure content text is bright in light mode */
+html[data-theme='light'] .theme-doc-markdown p,
+html[data-theme='light'] .theme-doc-markdown li {
+  color: #f0f0f0 !important;
+}
+
+/* Ensure links in light mode are visible */
+html[data-theme='light'] a {
+  color: #C4B5FD !important;
+}
+
+html[data-theme='light'] a:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(139, 0, 255, 0.8);
+}
+
+/* Force bright text for specific elements in both modes */
+h1, h2, h3, h4, h5, h6, p,
+.navbar__title, .hero__title, .hero__subtitle, .sectionTitle,
+.footer, .footer__link-item {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(167, 139, 250, 0.7) !important; /* Neon glow */
+}
+
+/* Navbar styling - purple translucent background with neon glow */
+.navbar {
+  background: rgba(30, 0, 43, 0.85) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(139, 0, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(139, 0, 255, 0.15);
+}
+
+.navbar__title {
+  color: white !important;
+  text-shadow: 0 0 10px rgba(139, 0, 255, 0.7);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar__link {
+  color: #C4B5FD !important;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar__link:hover {
+  color: white !important;
+  text-shadow: 0 0 8px rgba(139, 0, 255, 0.8);
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #8B00FF, transparent);
+  transition: width 0.3s ease;
+}
+
+.navbar__link:hover::after {
+  width: 100%;
+}
+
+/* Footer styling - neon links */
+.footer {
+  background: rgba(16, 0, 24, 0.9) !important;
+  border-top: 1px solid rgba(139, 0, 255, 0.3);
+}
+
+.footer__link-item {
+  color: #C4B5FD !important;
+  transition: all 0.3s ease;
+}
+
+.footer__link-item:hover {
+  color: white !important;
+  text-shadow: 0 0 8px rgba(139, 0, 255, 0.8);
+}
+
+/* Custom styling for content */
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+/* Styling for code blocks with neon effect */
+.codeBlock {
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(139, 0, 255, 0.2);
+  border: 1px solid rgba(139, 0, 255, 0.3);
+}
+
+/* Styling for diagrams and images */
+.diagramContainer {
+  margin: 2rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.diagramContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(139, 0, 255, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(139, 0, 255, 0.05) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.diagramContainer img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(139, 0, 255, 0.3);
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.diagramContainer img:hover {
+  box-shadow: 0 0 30px rgba(139, 0, 255, 0.6);
+  transform: scale(1.02);
+}
+
+/* Dark mode specific styles */
+html[data-theme='dark'] .diagramContainer img {
+  box-shadow: 0 4px 20px rgba(139, 0, 255, 0.3);
+}
+
+/* Enhanced buttons with neon glow */
+.button {
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+/* Custom styling for sidebar */
+.menu {
+  background: rgba(20, 0, 30, 0.95) !important;
+  overflow-y: auto; /* Allow scrolling for long menus */
+  max-height: calc(100vh - 100px); /* Ensure menu fits in viewport with space for navbar */
+}
+
+.menu__link {
+  color: #C4B5FD !important;
+  transition: all 0.3s ease;
+  padding: 8px 16px !important; /* Add padding for better touch targets */
+}
+
+.menu__link:hover {
+  color: white !important;
+  text-shadow: 0 0 8px rgba(139, 0, 255, 0.8);
+  background: rgba(139, 0, 255, 0.1) !important;
+}
+
+/* Mobile menu specific styling */
+.navbar-sidebar {
+  background: rgba(30, 0, 43, 0.95) !important;
+}
+
+.navbar-sidebar .menu {
+  background: transparent !important;
+}
+
+/* Ensure sidebar items in mobile menu use bright white text */
+.navbar-sidebar .menu__list .menu__list-item .menu__link {
+  color: #ffffff !important;
+  text-shadow: 0 0 5px rgba(139, 0, 255, 0.5) !important;
+}
+
+.navbar-sidebar .menu__list .menu__list-item .menu__link:hover {
+  color: white !important;
+  background: rgba(139, 0, 255, 0.2) !important;
+}
+
+/* Mobile menu overlay styling */
+.navbar-sidebar__backdrop {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Ensure proper spacing and readability in mobile menu */
+.navbar-sidebar .menu__list .menu__list-item {
+  margin: 2px 0 !important;
+}
+
+/* Category styling in mobile */
+.menu__list-item-collapsible .menu__link {
+  color: #ffffff !important;
+  text-shadow: 0 0 5px rgba(139, 0, 255, 0.5) !important;
+}
+
+.menu__list-item-collapsible .menu__link:hover {
+  color: white !important;
+  background: rgba(139, 0, 255, 0.2) !important;
+}
+
+/* Enhanced dark mode toggle */
+.react-toggle-track {
+  background-color: #8B00FF !important;
+}
+
+/* Custom scrollbar for cyberpunk feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a0024;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#8B00FF, #6900CC);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(#9C33FF, #7A00E6);
+}
+
+/* Custom styling for headings */
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+  text-shadow: 0 0 10px rgba(139, 0, 255, 0.3);
+}
+
+/* Animations for subtle glow pulse and fade-in on scroll */
+@keyframes neonGlow {
+  0% { text-shadow: 0 0 5px rgba(139, 0, 255, 0.5); }
+  50% { text-shadow: 0 0 20px rgba(139, 0, 255, 0.8), 0 0 30px rgba(139, 0, 255, 0.6); }
+  100% { text-shadow: 0 0 5px rgba(139, 0, 255, 0.5); }
+}
+
+.neon-text {
+  animation: neonGlow 3s infinite alternate;
+}
+
+/* Responsive adjustments */
+@media (max-width: 996px) {
+  .navbar {
+    background: rgba(30, 0, 43, 0.95) !important;
+  }
+
+  .container {
+    padding: 0 0.5rem;
+  }
+}

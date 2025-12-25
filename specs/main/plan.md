@@ -31,14 +31,7 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-### RAG Architecture Compliance
-- [ ] Confirm all components use free-tier services only (Google Gemini API, Qdrant Cloud free tier, Neon Serverless Postgres)
-- [ ] Verify LangChain pipeline architecture with required integrations (langchain-google-genai, qdrant-client, psycopg2-binary)
-- [ ] Ensure secure environment management (no .env file access, proper credential handling)
-- [ ] Confirm document processing & indexing from docs/ directory to Qdrant with metadata
-- [ ] Validate backend implementation in "backend" folder using FastAPI
-- [ ] Verify frontend integration with Docusaurus (floating bubble + /chat route)
-- [ ] Check that all prompts/responses are logged in prompts.md
+[Gates determined based on constitution file]
 
 ## Project Structure
 

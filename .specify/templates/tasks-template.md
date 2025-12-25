@@ -48,9 +48,11 @@ description: "Task list template for feature implementation"
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create project structure per implementation plan
-- [ ] T002 Initialize [language] project with [framework] dependencies
-- [ ] T003 [P] Configure linting and formatting tools
+- [ ] T001 Create project structure with backend folder for FastAPI implementation
+- [ ] T002 Initialize Python project with RAG dependencies (LangChain, langchain-google-genai, qdrant-client, psycopg2-binary, python-dotenv)
+- [ ] T003 [P] Configure environment management with python-dotenv (secure handling of API keys)
+- [ ] T004 Setup Qdrant Cloud connection and test integration
+- [ ] T005 Setup Google Gemini API integration with gemini-1.5-flash
 
 ---
 
@@ -62,12 +64,14 @@ description: "Task list template for feature implementation"
 
 Examples of foundational tasks (adjust based on your project):
 
-- [ ] T004 Setup database schema and migrations framework
-- [ ] T005 [P] Implement authentication/authorization framework
-- [ ] T006 [P] Setup API routing and middleware structure
-- [ ] T007 Create base models/entities that all stories depend on
-- [ ] T008 Configure error handling and logging infrastructure
-- [ ] T009 Setup environment configuration management
+- [ ] T006 Setup database schema and migrations framework (if using Neon Postgres for session history)
+- [ ] T007 [P] Implement document processing pipeline for Markdown files from docs/ directory
+- [ ] T008 [P] Setup API routing and middleware structure for FastAPI backend
+- [ ] T009 Create base models/entities that all stories depend on
+- [ ] T010 Configure error handling and logging infrastructure (including prompts.md logging)
+- [ ] T011 Setup environment configuration management with secure credential handling
+- [ ] T012 Implement document chunking and indexing mechanism for Qdrant
+- [ ] T013 Create embedding pipeline using Google Gemini API
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 

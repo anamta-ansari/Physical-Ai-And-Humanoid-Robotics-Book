@@ -1,0 +1,315 @@
+/* Neon-themed styles for the RAG Chatbot */
+
+.chat-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 400px;
+  height: 500px;
+  background: rgba(30, 30, 40, 0.95);
+  border: 2px solid #00eeff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 238, 255, 0.5),
+              0 0 40px rgba(0, 150, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #00eeff;
+}
+
+.chat-header h3 {
+  margin: 0;
+  color: #00eeff;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+}
+
+.chat-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-controls button {
+  background: rgba(0, 150, 255, 0.3);
+  border: 1px solid #00eeff;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-controls button:hover {
+  background: rgba(0, 200, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+}
+
+.selected-text-preview {
+  background: rgba(0, 100, 150, 0.3);
+  border: 1px solid #00aaff;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 8px;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected-text-preview .remove-selection {
+  background: rgba(255, 50, 50, 0.3);
+  border: 1px solid #ff5555;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: 0.8em;
+}
+
+.selected-text-preview .remove-selection:hover {
+  background: rgba(255, 80, 80, 0.5);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.welcome-message {
+  text-align: center;
+  color: #aaa;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.message {
+  max-width: 80%;
+  padding: 10px 15px;
+  border-radius: 18px;
+  word-wrap: break-word;
+  position: relative;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: rgba(0, 100, 200, 0.3);
+  border: 1px solid #00aaff;
+  border-bottom-right-radius: 5px;
+}
+
+.message.bot {
+  align-self: flex-start;
+  background: rgba(50, 50, 70, 0.7);
+  border: 1px solid #8888ff;
+  border-bottom-left-radius: 5px;
+}
+
+.message-sources {
+  font-size: 0.7em;
+  color: #aaa;
+  margin-top: 5px;
+  text-align: right;
+}
+
+.chat-input-area {
+  display: flex;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid #00eeff;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 20px;
+  background: rgba(0, 20, 40, 0.7);
+  color: white;
+  resize: none;
+  outline: none;
+}
+
+.chat-input:focus {
+  border-color: #00eeff;
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+}
+
+.send-button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background: rgba(0, 150, 255, 0.5);
+  border: 1px solid #00eeff;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.send-button:hover {
+  background: rgba(0, 200, 255, 0.7);
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+}
+
+.send-button:disabled {
+  background: rgba(100, 100, 100, 0.3);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.chat-float-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #00aaff, #00eeff);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 150, 255, 0.6),
+              0 0 20px rgba(0, 238, 255, 0.4);
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.chat-float-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(0, 180, 255, 0.8),
+              0 0 30px rgba(0, 238, 255, 0.6);
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.typing-indicator span {
+  height: 8px;
+  width: 8px;
+  background: #aaa;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 2px;
+  animation: typing 1s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+}
+
+.modal-content {
+  width: 80%;
+  max-width: 800px;
+  height: 80vh;
+  background: rgba(30, 30, 40, 0.95);
+  border: 2px solid #00eeff;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 238, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+  color: white;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #00eeff;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #00eeff;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+}
+
+.modal-close-btn {
+  background: rgba(255, 50, 50, 0.3);
+  border: 1px solid #ff5555;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 80, 80, 0.5);
+}
+
+.modal-body {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .chat-container {
+    width: calc(100% - 40px);
+    height: 50vh;
+    right: 20px;
+    bottom: 100px;
+  }
+  
+  .modal-content {
+    width: 95%;
+    height: 70vh;
+  }
+  
+  .chat-float-button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}

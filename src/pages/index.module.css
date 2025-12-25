@@ -1,0 +1,479 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * locally scoped CSS for the homepage component
+ */
+
+/* Overall theme - dark background with vibrant purple/neon glow */
+html[data-theme='dark'] {
+  --ifm-background-color: #1E002B;
+  --ifm-color-primary: #8B00FF;
+  --ifm-color-primary-dark: #7A00E6;
+  --ifm-color-primary-darker: #6900CC;
+  --ifm-color-primary-darkest: #5800B3;
+  --ifm-color-primary-light: #9C33FF;
+  --ifm-color-primary-lighter: #AD4DFF;
+  --ifm-color-primary-lightest: #BE66FF;
+}
+
+/* Glowing circuit board border around the entire page */
+body {
+  background: linear-gradient(145deg, #1E002B, #0d001a);
+  background-attachment: fixed;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, rgba(139, 0, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(139, 0, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -1;
+  animation: circuitPulse 4s infinite alternate;
+}
+
+@keyframes circuitPulse {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.7; }
+}
+
+/* Hero Banner with background image and dark overlay */
+.heroBanner {
+  padding: 4rem 0;
+  text-align: left; /* Left-aligned content */
+  position: relative;
+  overflow: hidden;
+  background: url('https://media.craiyon.com/2025-10-17/cP3WsILJTF2ZWRoD30EEgQ.webp') no-repeat center center;
+  background-size: cover;
+  min-height: 100vh; /* At least 100vh for full dramatic effect */
+  display: flex;
+  align-items: flex-end; /* Align content to bottom */
+  justify-content: flex-start; /* Align content to left */
+}
+
+/* Fallback background if primary image doesn't load */
+.heroBanner:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10225319491831323') no-repeat center center;
+  background-size: cover;
+  opacity: 1;
+  z-index: -1;
+}
+
+/* Dark overlay for text readability */
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hero content box positioned at bottom-left with semi-transparent background and neon glow border */
+.heroContent {
+  position: relative;
+  z-index: 2;
+  color: white;
+  max-width: 500px;
+  margin: 0 0 50px 50px; /* Bottom-left positioning */
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+  border: 2px solid #8B00FF; /* Neon purple glow border */
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(139, 0, 255, 0.7); /* Glow effect */
+  animation: fadeInContent 1s ease-out;
+}
+
+/* Animation for content fade-in */
+@keyframes fadeInContent {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+    min-height: 100vh;
+    align-items: center; /* Center vertically on mobile */
+    justify-content: center; /* Center horizontally on mobile */
+  }
+
+  .heroContent {
+    margin: auto; /* Center on mobile */
+    max-width: 90%;
+    padding: 20px;
+  }
+}
+
+/* Neon glow for title and subtitle */
+.hero__title {
+  color: white;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #8B00FF, 0 0 40px #8B00FF; /* Subtle neon glow */
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: titleGlow 2s infinite alternate;
+  font-weight: bold; /* Bold title */
+}
+
+@keyframes titleGlow {
+  from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #8B00FF, 0 0 40px #8B00FF; }
+  to { text-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #8B00FF, 0 0 45px #8B00FF; }
+}
+
+.hero__subtitle {
+  color: #e0e0e0; /* Light gray text */
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Buttons with glowing effect - positioned below the text box */
+.buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start; /* Left-aligned buttons */
+  flex-wrap: wrap;
+  margin-top: 1.5rem; /* Space above buttons */
+}
+
+/* Purple neon background button */
+.button--primary {
+  background-color: #8B00FF !important; /* Purple neon background */
+  border-color: #8B00FF !important;
+  color: white !important; /* White text */
+  box-shadow: 0 0 15px rgba(139, 0, 255, 0.7) !important;
+  transition: all 0.3s ease;
+  border-radius: 8px; /* Rounded style */
+}
+
+.button--primary:hover {
+  background-color: #9C33FF !important;
+  border-color: #9C33FF !important;
+  box-shadow: 0 0 25px rgba(139, 0, 255, 0.9) !important;
+  transform: translateY(-2px);
+}
+
+/* Cyan/teal neon background button */
+.button--secondary {
+  background-color: #00D1FF !important; /* Cyan/teal neon background */
+  border-color: #00D1FF !important;
+  color: white !important; /* White text */
+  box-shadow: 0 0 15px rgba(0, 209, 255, 0.7) !important;
+  transition: all 0.3s ease;
+  border-radius: 8px; /* Rounded style */
+}
+
+.button--secondary:hover {
+  background-color: #14e1ff !important;
+  border-color: #14e1ff !important;
+  box-shadow: 0 0 25px rgba(0, 209, 255, 0.9) !important;
+  transform: translateY(-2px);
+}
+
+/* Chapter Overview Section */
+.chapterOverview {
+  padding: 4rem 0;
+  background-color: #1a0024;
+  position: relative;
+}
+
+.chapterOverview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(139, 0, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 0, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(139, 0, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.sectionTitle {
+  text-align: center;
+  color: white;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  text-shadow: 0 0 10px rgba(139, 0, 255, 0.7);
+}
+
+.chapterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+.chapterCard {
+  background: rgba(30, 0, 43, 0.8);
+  border: 2px solid #8B00FF;
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(139, 0, 255, 0.3);
+}
+
+.chapterCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(139, 0, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.chapterCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(139, 0, 255, 0.6);
+  border-color: #9C33FF;
+}
+
+.chapterCard:hover::before {
+  transform: translateX(100%);
+}
+
+.chapterCard h3 {
+  color: white;
+  margin: 1rem 0 0;
+  font-size: 1rem;
+}
+
+.cardIcon {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 8px rgba(139, 0, 255, 0.8));
+}
+
+/* About the Book Section */
+.aboutSection {
+  padding: 4rem 0;
+  background-color: #160020;
+}
+
+.aboutContent {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.aboutText {
+  flex: 1;
+  color: white;
+}
+
+.aboutText h2 {
+  color: white;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  text-shadow: 0 0 10px rgba(139, 0, 255, 0.5);
+}
+
+.aboutText p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.aboutImage {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.robotBlueprint {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(139, 0, 255, 0.5);
+  border: 2px solid #8B00FF;
+  transition: all 0.3s ease;
+}
+
+.robotBlueprint:hover {
+  box-shadow: 0 0 35px rgba(139, 0, 255, 0.8);
+  transform: scale(1.02);
+}
+
+/* Tutorials & Labs Section */
+.tutorialsSection {
+  padding: 4rem 0;
+  background-color: #1a0024;
+}
+
+.tutorialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+.tutorialCard {
+  background: rgba(30, 0, 43, 0.8);
+  border: 2px solid #8B00FF;
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(139, 0, 255, 0.3);
+}
+
+.tutorialCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(139, 0, 255, 0.6);
+  border-color: #9C33FF;
+}
+
+.tutorialCard h3 {
+  color: white;
+  margin: 1rem 0 0;
+  font-size: 1rem;
+}
+
+/* Featured Visuals/Robotics Gallery Section */
+.featuredStrip {
+  padding: 3rem 0;
+  background-color: #160020;
+  position: relative;
+  overflow-x: hidden; /* No horizontal scrollbar */
+}
+
+.featuredStrip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(139, 0, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 0, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Responsive grid: 4 columns on large screens, 2 on tablets, 1 on mobile */
+.featuredImages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns on large screens */
+  gap: 20px;
+  padding: 1rem;
+  width: 100%;
+}
+
+/* Tablet view */
+@media (max-width: 1024px) {
+  .featuredImages {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+  }
+}
+
+/* Mobile view */
+@media (max-width: 767px) {
+  .featuredImages {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+}
+
+.featuredImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #A78BFA; /* Neon purple glow border */
+  transition: all 0.3s ease;
+  border: 2px solid #A78BFA; /* Neon purple border */
+  align-self: stretch; /* Ensure consistent height */
+}
+
+.featuredImage:hover {
+  box-shadow: 0 0 30px #A78BFA; /* Enhanced glow on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
+  border-color: #8B00FF; /* Slightly different border on hover */
+}
+
+/* Featured visuals section title styling */
+.featuredStrip .sectionTitle {
+  text-align: center;
+  color: white !important;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  text-shadow: 0 0 15px rgba(167, 139, 250, 0.8) !important; /* Strong neon glow */
+  font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 996px) {
+  .aboutContent {
+    flex-direction: column;
+  }
+
+  .featuredImage {
+    max-width: 48%;
+  }
+}
+
+@media (max-width: 768px) {
+  .featuredImage {
+    max-width: 100%;
+  }
+
+  .chapterGrid,
+  .tutorialGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* Animations for subtle glow pulse and fade-in on scroll */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chapterCard, .tutorialCard {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.chapterCard:nth-child(1) { animation-delay: 0.1s; }
+.chapterCard:nth-child(2) { animation-delay: 0.2s; }
+.chapterCard:nth-child(3) { animation-delay: 0.3s; }
+.chapterCard:nth-child(4) { animation-delay: 0.4s; }
+.chapterCard:nth-child(5) { animation-delay: 0.5s; }
+.chapterCard:nth-child(6) { animation-delay: 0.6s; }
+.chapterCard:nth-child(7) { animation-delay: 0.7s; }
+.chapterCard:nth-child(8) { animation-delay: 0.8s; }

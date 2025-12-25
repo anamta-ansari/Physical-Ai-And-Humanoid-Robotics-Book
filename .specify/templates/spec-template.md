@@ -84,16 +84,18 @@
 
 ### Functional Requirements
 
-- **FR-001**: System MUST [specific capability, e.g., "allow users to create accounts"]
-- **FR-002**: System MUST [specific capability, e.g., "validate email addresses"]  
-- **FR-003**: Users MUST be able to [key interaction, e.g., "reset their password"]
-- **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
-- **FR-005**: System MUST [behavior, e.g., "log all security events"]
+- **FR-001**: System MUST use only free-tier services (Google Gemini API, Qdrant Cloud free tier, Neon Serverless Postgres)
+- **FR-002**: System MUST implement RAG pipeline using LangChain with required integrations (langchain-google-genai, qdrant-client, python-dotenv)
+- **FR-003**: System MUST index all Markdown chapters from docs/ directory into Qdrant with appropriate chunking and chapter metadata
+- **FR-004**: System MUST provide chat UI embedded in Docusaurus with floating bubble on all pages and full /chat route
+- **FR-005**: System MUST log all prompts and responses in prompts.md for audit and improvement purposes
+- **FR-006**: System MUST securely manage API keys via environment variables without exposing .env file contents
+- **FR-007**: System MUST support queries based only on user-selected/highlighted text from book content
 
 *Example of marking unclear requirements:*
 
-- **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
-- **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
+- **FR-008**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
+- **FR-009**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
 
 ### Key Entities *(include if feature involves data)*
 

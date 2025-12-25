@@ -1,0 +1,8 @@
+{
+  // This file is set up so that this repository can be used as a Docusaurus site
+  // that uses TypeScript.
+  "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "."
+  }
+}
